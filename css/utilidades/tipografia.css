@@ -1,0 +1,26 @@
+.font-s {
+  font-size: 5.05pt;
+}
+
+.font-m {
+  font-size: 6.5pt;
+}
+
+.font-m-s {
+  font-size: 6.5pt;
+  text-transform: uppercase;
+}
+
+.font-l {
+  font-size: 8.05pt;
+}
+
+.font-xl {
+  font-size: 10.451pt;
+}
+
+.font-ss {
+  font:
+    400 0.875rem/1.43 "Roboto",
+    sans-serif;
+}

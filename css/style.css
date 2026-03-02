@@ -1,0 +1,6 @@
+@import "./global/global.css";
+@import "./utilidades/cores.css";
+@import "./utilidades/componentes.css";
+@import "./utilidades/formulario.css";
+@import "./utilidades/tipografia.css";
+@import "./factura/factura.css";

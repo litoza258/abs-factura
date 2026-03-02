@@ -1,0 +1,172 @@
+#fatura {
+  background-color: var(--cor-branca);
+  width: 200mm;
+  max-width: 210mm;
+  padding: 10mm;
+  margin: 0 auto !important;
+  box-sizing: border-box;
+  transform: scale(0.95); /* encolhe 5% */
+  transform-origin: top;
+}
+
+.empresa p {
+  font-size: 7pt;
+}
+
+img {
+  width: 94mm;
+  height: auto;
+}
+
+address p {
+  line-height: 1.6;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dados {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.original-text {
+  display: block;
+  margin-top: 8mm;
+  font-weight: bold;
+}
+
+h3 {
+  margin-top: 8mm;
+  font-size: 6.35mm;
+}
+
+.cliente {
+  width: 100%;
+  height: 38mm;
+  border: 0.529mm solid var(--cor-cinza);
+}
+
+.cliente div {
+  padding: 2mm;
+  line-height: 1.6;
+}
+
+.factura-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 2mm;
+}
+
+.container-s {
+  margin-top: 2.2mm;
+}
+
+.servico-subtitulo {
+  margin-top: 2.2mm;
+}
+
+.servicos {
+  /* height: 65mm; */
+  height: 65mm;
+}
+
+.servicos-container {
+  display: grid;
+  grid-template-columns: 1.4fr 3fr 0.8fr 0.5fr 1fr 0.5fr 0.5fr 1fr;
+  gap: 2mm;
+}
+
+.text-r {
+  text-align: right;
+}
+
+.separador-l {
+  display: block;
+  width: 100%;
+  height: 0.7mm;
+  background-color: var(--cor-preta);
+  margin-top: 2.5mm;
+}
+
+.separador-m {
+  display: block;
+  width: 100%;
+  height: 0.339mm;
+  margin-top: 1.5mm;
+  margin-bottom: 1.5mm;
+  background-color: var(--cor-preta);
+}
+
+.separador-s {
+  display: block;
+  width: 100%;
+  height: 0.212mm;
+  background-color: var(--cor-cinza);
+  margin-top: 1.06mm;
+  margin-bottom: 1.06mm;
+}
+
+.pagamento {
+  max-width: 57.15mm;
+}
+
+.pagamento h4 {
+  margin-top: 3.2mm;
+}
+
+.processado {
+  margin-bottom: 4.5mm;
+}
+
+.pagemento-dados {
+  display: grid;
+  place-items: center;
+  width: 57.15mm;
+  height: 4.339mm;
+  font-weight: bold;
+  background-color: var(--cor-cinza);
+  border-top: 2px solid var(--cor-preta);
+  margin-top: 4mm;
+}
+
+.conta {
+  margin-top: 3.175mm;
+  margin-bottom: 3.175mm;
+}
+
+.conta span {
+  color: blue;
+}
+
+.container-quadro-iva {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 3fr;
+  gap: 2mm;
+}
+
+.resumo-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10mm;
+}
+
+.linha {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6.879mm;
+}
+
+.outros-dados {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10mm;
+  gap: 2mm;
+}

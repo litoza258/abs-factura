@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <title>Factura ABS</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <section class="formulario">
+        <div class="dados-form container-form form">
+          <h2 class="font-ss cor-9 col-2">DADOS DO CLIENTE</h2>
+          <div class="col-2">
+            <label for="nome">Nome</label>
+            <input type="text" id="inNome" name="nome" />
+          </div>
+          <div class="form col-2">
+            <div>
+              <label for="endereco">Endereço</label>
+              <input type="text" id="inEndereco" name="endereco" />
+            </div>
+            <div>
+              <label for="nuit">Nuit</label>
+              <input
+                type="text"
+                id="inNuit"
+                name="nuit"
+                placeholder="000000000"
+              />
+            </div>
+          </div>
+          <div class="form col-2">
+            <div>
+              <label for="factura">Factura N.º</label>
+              <input type="text" id="inFacturaNumero" name="factura" />
+            </div>
+          </div>
+          <button class="botao secundario" id="btAdicionarDados">
+            ADICIONAR OS DADOS
+          </button>
+
+          <h2 class="font-ss cor-9 col-2">DADOS DA FACTURA</h2>
+          <div class="col-2">
+            <label for="descricao">Descrição</label>
+            <input type="text" id="inDescricao" name="descricao" />
+          </div>
+          <div class="form-2 col-2">
+            <div>
+              <label for="quantidade">Qtd.</label>
+              <input type="text" id="inQuantidade" name="quantidade" />
+            </div>
+            <div>
+              <label for="preco">Pr. Unitário</label>
+              <input type="text" id="inPreco" name="preco" />
+            </div>
+          </div>
+          <button class="botao secundario" id="btAdicionarItem">
+            ADICIONAR ITEM
+          </button>
+          <div class="form">
+            <button class="botao secundario" id="btDownload">Download</button>
+          </div>
+        </div>
+      </section>
+      <article class="factura" id="fatura">
+        <header class="factura-header">
+          <div class="cabecalho">
+            <img src="img/grafica-abs-logo.svg" alt="Logo" />
+            <p class="font-m">Pág.1/1</p>
+          </div>
+          <div class="dados">
+            <div class="empresa">
+              <address>
+                <p><strong>Nuit:</strong> 400586713</p>
+                <p>Av. Eduardo Mondlane nº 20 R/C</p>
+                <p><strong>Tel:</strong> 846788267</p>
+                <p><strong>Email:</strong> grafica.abs15@gmail.com</p>
+                <p>Pemba, Cabo Delgado – Moçambique</p>
+              </address>
+
+              <span class="original-text font-m">Original </span>
+              <h3 class="font-xl" id="outFactura">Factura N.º</h3>
+            </div>
+
+            <div class="cliente">
+              <div id="outCliente"></div>
+            </div>
+          </div>
+        </header>
+
+        <!-- separador -->
+        <div class="separador-l"></div>
+        <!-- separador -->
+
+        <!-- dados da factura -->
+        <section class="factura-info">
+          <div class="factura-container">
+            <div class="container-s">
+              <p class="font-m"><strong>V/N.º Contrib.</strong></p>
+              <span class="separador-s"></span>
+            </div>
+            <div class="container-s">
+              <p class="font-m"><strong>Requisição</strong></p>
+              <span class="separador-s"></span>
+            </div>
+            <div class="container-s">
+              <p class="font-m"><strong>Moeda</strong></p>
+              <span class="separador-s"></span>
+              <p class="font-m">MT</p>
+            </div>
+            <div class="container-s">
+              <p class="font-m"><strong>Câmbio</strong></p>
+              <span class="separador-s"></span>
+              <p class="font-m">1,00</p>
+            </div>
+            <div class="container-s">
+              <p class="font-m"><strong>Data</strong></p>
+              <span class="separador-s"></span>
+              <p class="font-m" id="outData"></p>
+            </div>
+          </div>
+          <div class="factura-container">
+            <div class="container-s">
+              <p class="font-m"><strong>Desc. Cli.</strong></p>
+              <span class="separador-s"></span>
+              <p class="font-m">0,00</p>
+            </div>
+            <div class="container-s">
+              <p class="font-m"><strong>Desc. Fin.</strong></p>
+              <span class="separador-s"></span>
+              <p class="font-m">0,00</p>
+            </div>
+            <div class="container-s">
+              <p class="font-m"><strong>Vencimento</strong></p>
+              <span class="separador-s"></span>
+              <p class="font-m" id="outDataLimite"></p>
+            </div>
+            <div class="container-s">
+              <p class="font-m"><strong>Condição Pagamento</strong></p>
+              <span class="separador-s"></span>
+              <p class="font-m">50% antes, saldo na entrega.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- separador -->
+        <div class="separador-m"></div>
+        <!-- separador -->
+
+        <!-- tabela de serviços -->
+        <div class="servicos">
+          <div class="">
+            <div class="servicos-container">
+              <div>
+                <p class="font-m"><strong>Artigo</strong></p>
+                <span class="separador-s"></span>
+              </div>
+              <div>
+                <p class="font-m"><strong>Descrição</strong></p>
+                <span class="separador-s"></span>
+              </div>
+              <div>
+                <p class="font-m text-r"><strong>Qtd.</strong></p>
+                <span class="separador-s"></span>
+              </div>
+              <div>
+                <p class="font-m text-r"><strong>Un.</strong></p>
+                <span class="separador-s"></span>
+              </div>
+              <div>
+                <p class="font-m text-r"><strong>Pr. Unitário</strong></p>
+                <span class="separador-s"></span>
+              </div>
+              <div>
+                <p class="font-m text-r"><strong>Desc.</strong></p>
+                <span class="separador-s"></span>
+              </div>
+              <div>
+                <p class="font-m text-r"><strong>IVA</strong></p>
+                <span class="separador-s"></span>
+              </div>
+              <div>
+                <p class="font-m text-r"><strong>Total Líquido</strong></p>
+                <span class="separador-s"></span>
+              </div>
+            </div>
+          </div>
+          <div class="servicos" id="outItens"></div>
+        </div>
+
+        <!-- dados de pagamento -->
+        <p class="font-m">
+          Documento Processado por Computador / @ PRIMAVERA BSS /
+        </p>
+        <section class="pagamento">
+          <p class="font-s pagemento-dados">DADOS PARA PAGAMENTO</p>
+          <h4 class="font-s">Banco Único</h4>
+          <p class="font-s conta">
+            Conta: <span>000057783505</span> | NIB:
+            <span>004300000000578350585</span>
+          </p>
+
+          <!-- separador -->
+          <div class="separador-m"></div>
+          <!-- separador -->
+        </section>
+
+        <!-- separador -->
+        <div class="separador-m"></div>
+        <!-- separador -->
+
+        <!-- resumo -->
+        <footer class="resumo">
+          <div class="resumo-container">
+            <div>
+              <div>
+                <p class="font-m"><strong>Quadro Resumo do IVA</strong></p>
+                <span class="separador-s"></span>
+              </div>
+              <div class="container-quadro-iva">
+                <div>
+                  <p class="font-m"><strong>Taxa</strong></p>
+                  <span class="separador-s"></span>
+                  <p class="font-m">0,00</p>
+                  <p class="font-m">16%</p>
+                </div>
+                <div>
+                  <p class="font-m"><strong>Incidência</strong></p>
+                  <span class="separador-s"></span>
+                  <p class="font-m">0,00</p>
+                  <p class="font-m">0,00</p>
+                </div>
+                <div>
+                  <p class="font-m"><strong>Total IVA</strong></p>
+                  <span class="separador-s"></span>
+                  <p class="font-m">0,00</p>
+                  <p class="font-m" id="outIva">0,00</p>
+                </div>
+                <div>
+                  <p class="font-m"><strong>Motivo Isenção</strong></p>
+                  <span class="separador-s"></span>
+                </div>
+              </div>
+              <div class="outros-dados">
+                <div>
+                  <p class="font-m"><strong>Carga</strong></p>
+                  <span class="separador-s"></span>
+                  <p class="font-m" id="outEnderecoRodape">N/ Morada</p>
+                </div>
+                <div>
+                  <p class="font-m"><strong>Descarga</strong></p>
+                  <span class="separador-s"></span>
+                  <p class="font-m">V/ Morada</p>
+                  <p class="font-m">Pemba</p>
+                </div>
+              </div>
+            </div>
+            <div class="resumo-contas">
+              <div class="lista-contas">
+                <div class="linha">
+                  <p class="font-m">Mercadoria/Serviços</p>
+                  <p class="font-m" id="outTotalSemIva">0,00</p>
+                </div>
+                <div class="separador-s"></div>
+              </div>
+              <div class="lista-contas">
+                <div class="linha">
+                  <p class="font-m">Descontos Comerciais</p>
+                  <p class="font-m">0,00</p>
+                </div>
+                <div class="separador-s"></div>
+              </div>
+              <div class="lista-contas">
+                <div class="linha">
+                  <p class="font-m">Desconto Financeiro</p>
+                  <p class="font-m">0,00</p>
+                </div>
+                <div class="separador-s"></div>
+              </div>
+              <div class="lista-contas">
+                <div class="linha">
+                  <p class="font-m">Portes</p>
+                  <p class="font-m">0,00</p>
+                </div>
+                <div class="separador-s"></div>
+              </div>
+              <div class="lista-contas">
+                <div class="linha">
+                  <p class="font-m">Outros Serviços</p>
+                  <p class="font-m">0,00</p>
+                </div>
+                <div class="separador-s"></div>
+              </div>
+              <div class="lista-contas">
+                <div class="linha">
+                  <p class="font-m">Adiantamentos</p>
+                  <p class="font-m">0,00</p>
+                </div>
+                <div class="separador-s"></div>
+              </div>
+              <div class="lista-contas">
+                <div class="linha">
+                  <p class="font-m">IVA</p>
+                  <p class="font-m" id="outIvaDois">0,00</p>
+                </div>
+                <div class="separador-s"></div>
+              </div>
+              <div class="lista-contas">
+                <div class="linha">
+                  <p class="font-m">Acerto</p>
+                  <p class="font-m">0,00</p>
+                </div>
+                <div class="separador-s"></div>
+              </div>
+              <!-- Total -->
+              <div class="conta-total">
+                <div class="separador-m"></div>
+                <div class="total">
+                  <p class="font-xl"><strong>Total ( MT )</strong></p>
+                  <p class="font-xl">
+                    <strong id="outTotal">0,00</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p class="font-m ultimo">Moçambique</p>
+          </div>
+        </footer>
+      </article>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
